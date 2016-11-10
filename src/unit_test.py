@@ -1,6 +1,6 @@
 import unittest
-from .Payment import Payment
-from .Graph import Graph
+from Payment import Payment
+from Graph import Graph
 from collections import defaultdict
 
 class GraphTestCases(unittest.TestCase):
@@ -73,33 +73,53 @@ class GraphTestCases(unittest.TestCase):
         self.assertTrue("E" in graph.edges["F"])
 
         #Feature 1 - Transaction with previous user
-        # self.assertEquals(graph.is_within_network("A","B",1), "trusted")
-        # self.assertEquals(graph.is_within_network("B", "A", 1), "trusted")
-        # self.assertEquals(graph.is_within_network("C", "D", 1), "trusted")
-        # self.assertEquals(graph.is_within_network("A", "C", 1), "unverified")
-        # self.assertEquals(graph.is_within_network("D", "A", 1), "unverified")
-        # self.assertEquals(graph.is_within_network("F", "A", 1), "unverified")
+        self.assertEquals(graph.is_within_network("A","B",1), "trusted")
+        self.assertEquals(graph.is_within_network("B", "A", 1), "trusted")
+        self.assertEquals(graph.is_within_network("C", "D", 1), "trusted")
+        self.assertEquals(graph.is_within_network("A", "C", 1), "unverified")
+        self.assertEquals(graph.is_within_network("D", "A", 1), "unverified")
+        self.assertEquals(graph.is_within_network("F", "A", 1), "unverified")
 
         # Feature 2 - transaction with 2nd degree user
-        # self.assertEquals(graph.is_within_network("A", "B", 2), "trusted")
-        # self.assertEquals(graph.is_within_network("B", "D", 2), "trusted")
-        # self.assertEquals(graph.is_within_network("F", "D", 2), "trusted")
-        # self.assertEquals(graph.is_within_network("A", "D", 2), "unverified")
-        # self.assertEquals(graph.is_within_network("F", "A", 2), "unverified")
-        # self.assertEquals(graph.is_within_network("E", "B", 2), "unverified")
+        self.assertEquals(graph.is_within_network("A", "B", 2), "trusted")
+        self.assertEquals(graph.is_within_network("B", "D", 2), "trusted")
+        self.assertEquals(graph.is_within_network("F", "D", 2), "trusted")
+        self.assertEquals(graph.is_within_network("A", "D", 2), "unverified")
+        self.assertEquals(graph.is_within_network("F", "A", 2), "unverified")
+        self.assertEquals(graph.is_within_network("E", "B", 2), "unverified")
 
 
         # add another edge for further testing
         graph.add_edge("G", "F")
-        print graph.edges
         # Feature 3 - transaction with 4th degree user
-        # self.assertEquals(graph.is_within_network("A", "E", 4), "trusted")
-        self.assertEquals(graph.is_within_network("F", "B", 5), "trusted")
-        # self.assertEquals(graph.is_within_network("C", "E", 4), "trusted")
-        # self.assertEquals(graph.is_within_network("C", "G", 4), "trusted")
-        # self.assertEquals(graph.is_within_network("A", "F", 4), "unverified")
-        # self.assertEquals(graph.is_within_network("A", "G", 4), "unverified")
-        # self.assertEquals(graph.is_within_network("B", "G", 4), "unverified")
+        self.assertEquals(graph.is_within_network("A", "E", 4), "trusted")
+        self.assertEquals(graph.is_within_network("F", "B", 4), "trusted")
+        self.assertEquals(graph.is_within_network("C", "E", 4), "trusted")
+        self.assertEquals(graph.is_within_network("C", "G", 4), "trusted")
+        self.assertEquals(graph.is_within_network("A", "F", 4), "unverified")
+        self.assertEquals(graph.is_within_network("A", "G", 4), "unverified")
+        self.assertEquals(graph.is_within_network("B", "G", 4), "unverified")
+
+        # Futher testing to ensure scalability
+        graph.add_edge("G", "H")
+        graph.add_edge("D", "I")
+        graph.add_edge("C", "I")
+        graph.add_edge("J", "I")
+        graph.add_edge("J", "B")
+        self.assertEquals(graph.is_within_network("C", "I", 1), "trusted")
+        self.assertEquals(graph.is_within_network("J", "D", 2), "trusted")
+        self.assertEquals(graph.is_within_network("J", "E", 3), "trusted")
+        self.assertEquals(graph.is_within_network("I", "G", 4), "trusted")
+        self.assertEquals(graph.is_within_network("B", "G", 5), "trusted")
+        self.assertEquals(graph.is_within_network("J", "H", 6), "trusted")
+        self.assertEquals(graph.is_within_network("A", "H", 7), "trusted")
+        self.assertEquals(graph.is_within_network("H", "I", 1), "unverified")
+        self.assertEquals(graph.is_within_network("A", "D", 2), "unverified")
+        self.assertEquals(graph.is_within_network("A", "E", 3), "unverified")
+        self.assertEquals(graph.is_within_network("A", "G", 4), "unverified")
+        self.assertEquals(graph.is_within_network("B", "H", 5), "unverified")
+        self.assertEquals(graph.is_within_network("A", "H", 6), "unverified")
+
 
 class PaymentTestCases(unittest.TestCase):
     def test_instantiation(self):
