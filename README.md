@@ -1,7 +1,7 @@
 # Table of Contents
 
 1. [Challenge Summary] (README.md#challenge-summary)
-2. [Details of Implementation] (README.md#details-of-implementation)
+2. [Running the Application]  (README.md#how-to-run)
 
 ##Challenge Summary
 
@@ -50,3 +50,14 @@ However, if User A were to pay User F, a warning would be triggered as their tra
 ###Additional Feature
 
 One way which banks use to detect fraudulent transactions is by examining the amount of the transaction compared with the user's previous transactions. This feature was implemented as an added feature.  For any transaction, if the amount is greater than two times the standard deviation of their other transactions, it will be marked as unverified.
+
+## How To Run
+
+### Generating Outputs and Running Tests
+
+In order to run the application simply use the command line to run `./run.sh` which will create the output and write it to the paymo_output folder.  Before doing so, it will run all of the unit tests in src/unit_test.py.
+
+Further testing can be done using the tests in insight_testsuite.  To do so, run the provided tests with `./run_tests.sh` and the custom tests using `./e2e_test.sh`.  Output the provided and custom tests can be found in the tests/test-1-paymo-trans and tests/test-2-paymo-trans folders, respectively.
+
+
+
