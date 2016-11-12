@@ -2,7 +2,8 @@
 
 1. [Challenge Summary] (README.md#challenge-summary)
 2. [Running the Application]  (README.md#how-to-run)
-3. [Further Improvements] (README.md#how-to-run)
+3. [Dependencies and Details]  (README.md#dependencies-and-details)
+4. [Further Improvements] (README.md#further-improvements)
 
 ##Challenge Summary
 
@@ -59,6 +60,22 @@ One way which banks use to detect fraudulent transactions is by examining the am
 In order to run the application simply use the command line to run `./run.sh` which will create the output and write it to the paymo_output folder.  Before doing so, it will run all of the unit tests in src/unit_test.py.
 
 Further testing can be done using the tests in insight_testsuite.  To do so, run the provided tests with `./run_tests.sh` and the custom tests using `./e2e_test.sh`.  Output the provided and custom tests can be found in the tests/test-1-paymo-trans and tests/test-2-paymo-trans folders, respectively.
+
+## Dependencies and Details
+
+### Dependencies
+
+This implementation uses the following modules:
+* Python: collections
+* Python: warnings
+* Python: math
+* Python: sys
+* Python: re
+
+### Details
+
+In order to implement the calculations to see if two users were in a certain degrees of separation, the bidirectional Breadth-First Search Algorithm was used: https://en.wikipedia.org/wiki/Bidirectional_search
+
 
 ## Further Improvements
 
