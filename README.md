@@ -2,6 +2,7 @@
 
 1. [Challenge Summary] (README.md#challenge-summary)
 2. [Running the Application]  (README.md#how-to-run)
+3. [Further Improvements] (README.md#how-to-run)
 
 ##Challenge Summary
 
@@ -59,5 +60,12 @@ In order to run the application simply use the command line to run `./run.sh` wh
 
 Further testing can be done using the tests in insight_testsuite.  To do so, run the provided tests with `./run_tests.sh` and the custom tests using `./e2e_test.sh`.  Output the provided and custom tests can be found in the tests/test-1-paymo-trans and tests/test-2-paymo-trans folders, respectively.
 
+## Further Improvements
 
+### TODO Items
+
+- [] Investigate and benchmark other search algorithms (A*, Djikstra, single direction BFS, etc.)
+- [] Investigate, implement, and benchmark multithreaded BFS solution
+- [] Investigate, implement, and benchmark BFS solution enhanced with Dynamic Programming
+- [] Develop further unit and end to end tests
 
