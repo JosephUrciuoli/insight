@@ -64,8 +64,8 @@ Further testing can be done using the tests in insight_testsuite.  To do so, run
 
 ### TODO Items
 
-- [] Investigate and benchmark other search algorithms (A*, Djikstra, single direction BFS, etc.)
-- [] Investigate, implement, and benchmark multithreaded BFS solution
-- [] Investigate, implement, and benchmark BFS solution enhanced with Dynamic Programming
-- [] Develop further unit and end to end tests
+- [ ] Investigate and benchmark other search algorithms (A*, Djikstra, single direction BFS, etc.)
+- [ ] Investigate, implement, and benchmark multithreaded BFS solution
+- [ ] Investigate, implement, and benchmark BFS solution enhanced with Dynamic Programming
+- [ ] Develop further unit and end to end tests
 
