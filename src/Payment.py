@@ -1,8 +1,9 @@
+__author__ = "joseph_urciuoli"
 import warnings
 
-__author__ = "joseph_urciuoli"
 
-
+# class Payment
+# Used to organize and structure payment data from the input file
 class Payment(object):
 
     def __init__(self, time=None, id1=None, id2=None, amount=None, message=None):
@@ -12,6 +13,7 @@ class Payment(object):
         self.amount = amount
         self.message = message
 
+    # ini_with_text - initialize the class with a line from the text file
     def init_with_text(self, line):
         if type(line) == str:
             attr = line.split(",")
