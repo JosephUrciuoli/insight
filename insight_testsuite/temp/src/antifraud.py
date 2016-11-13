@@ -1,12 +1,9 @@
 __author__ = "joseph_urciuoli"
 import sys
-from collections import defaultdict
 from Payment import Payment
 from Graph import Graph
 from Verification import Verification
 import warnings
-from time import time
-import math
 import re
 
 DATE_REGEX = "\d{4}[-/]\d{2}[-/]\d{2}[\s/](\d{2}[:/])*\d{2}"
@@ -26,7 +23,7 @@ def main(args, degrees, added_feature=False):
     else:
         warnings.warn("Improper arguments passed. Payments not processed.")
     # Added feature
-    if len(args) > 6:
+    if len(args) > 6 and added_feature:
         output_added_feature(verification, file=args[2], output=args[6])
     else:
         warnings.warn("No output file location supplied for added feature. Processing not performed.")
@@ -125,7 +122,7 @@ def process_input(file):
                 verification.add_payment(payment.id1, payment.id2, payment.amount)
             else:
                 warnings.warn("Read line with improper formatting. The line was dropped.")
-    return graph, verification
+    return graph,verification
 
 
 # validate_line - ensure that the line read in from the text file is valid
